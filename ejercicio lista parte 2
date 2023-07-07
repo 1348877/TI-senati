@@ -1,0 +1,68 @@
+def pedir_nombres():
+    nombres = []
+    cantidad = int(input("Ingrese la cantidad de nombres: "))
+
+    for i in range(cantidad):
+        nombre = input(f"Ingrese el nombre {i+1}: ").capitalize()
+
+        while nombre in nombres:
+            print("El nombre ya ha sido ingresado. Intente nuevamente.")
+            nombre = input(f"Ingrese el nombre {i+1}: ").capitalize()
+
+        nombres.append(nombre)
+
+    return nombres
+
+
+def imprimir_resultados(nombres):
+    print(f"Se ingresaron {len(nombres)} nombres.")
+    print(f"Los nombres ingresados son: {nombres}")
+    for nombre in nombres:
+        print(f"{nombre} tiene {len(nombre)} letras.")
+
+
+nombres = pedir_nombres()
+imprimir_resultados(nombres)
+
+
+
+def procesar_nombres():
+    nombres = []
+    cantidad = int(input("Ingrese la cantidad de nombres: "))
+
+    for i in range(cantidad):
+        nombre = input(f"Ingrese el nombre {i+1}: ").capitalize()
+
+        while nombre in nombres:
+            print("El nombre ya ha sido ingresado. Intente nuevamente.")
+            nombre = input(f"Ingrese el nombre {i+1}: ").capitalize()
+
+        nombres.append(nombre)
+
+   
+    resultados = []
+    for nombre in nombres:
+        num_vocales = sum(1 for letra in nombre if letra.lower() in 'aeiouáéíóú')
+        num_consonantes = len(nombre) - num_vocales
+        num_letras = len(nombre)
+        resultados.append((nombre, num_vocales, num_consonantes, num_letras))
+
+   
+    nombres_ordenados = sorted(nombres)
+
+    return nombres_ordenados, resultados
+
+
+def imprimir_resultados(nombres_ordenados, resultados):
+    print(f"Lista de nombres ordenada alfabéticamente: {nombres_ordenados}")
+    print(f"Se ingresaron {len(nombres_ordenados)} nombres.")
+
+    for nombre, num_vocales, num_consonantes, num_letras in resultados:
+        print(f"\nNombre: {nombre}")
+        print(f"Número de vocales: {num_vocales}")
+        print(f"Número de consonantes: {num_consonantes}")
+        print(f"Número de letras: {num_letras}")
+
+
+nombres_ordenados, resultados = procesar_nombres()
+imprimir_resultados(nombres_ordenados, resultados)
