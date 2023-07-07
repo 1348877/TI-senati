@@ -1,0 +1,25 @@
+def pedir_nombres():
+    nombres = []
+    cantidad = int(input("Ingrese la cantidad de nombres: "))
+
+    for i in range(cantidad):
+        nombre = input(f"Ingrese el nombre {i+1}: ").capitalize()
+
+        while nombre in nombres:
+            print("El nombre ya ha sido ingresado. Intente nuevamente.")
+            nombre = input(f"Ingrese el nombre {i+1}: ").capitalize()
+
+        nombres.append(nombre)
+
+    return nombres
+
+
+def imprimir_resultados(nombres):
+    print(f"Se ingresaron {len(nombres)} nombres.")
+    print(f"Los nombres ingresados son: {nombres}")
+    for nombre in nombres:
+        print(f"{nombre} tiene {len(nombre)} letras.")
+
+
+nombres = pedir_nombres()
+imprimir_resultados(nombres)
