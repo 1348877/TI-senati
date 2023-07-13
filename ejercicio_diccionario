@@ -1,0 +1,33 @@
+lista_productos = {}
+
+while True:
+    nombre = input("Ingrese el nombre del producto: ")
+    marca = input("Ingrese la marca del producto: ")
+    costo = None
+    cantidad = None
+
+    while not costo:
+        try:
+            costo = float(input("Ingrese el costo del producto: "))
+        except ValueError:
+            print("Valor inválido. Ingrese un número válido.")
+
+    while not cantidad:
+        try:
+            cantidad = int(input("Ingrese la cantidad del producto: "))
+        except ValueError:
+            print("Valor inválido. Ingrese un número entero válido.")
+
+    lista_productos[nombre] = {"marca": marca, "costo": costo, "cantidad": cantidad}
+
+    desea_continuar = input("¿Desea ingresar más productos? (SI/NO): ")
+    if desea_continuar.upper() != "SI":
+        break
+
+print("Lista de productos:")
+for nombre, detalles in lista_productos.items():
+    print(f"Nombre: {nombre}")
+    print(f"Marca: {detalles['marca']}")
+    print(f"Costo: {detalles['costo']}")
+    print(f"Cantidad: {detalles['cantidad']}")
+    print()
